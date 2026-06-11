@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepShield AI – Deepfake Image Detection</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Landing Page Section -->
+        <section id="landing-page" class="section active fade-in">
+            <div class="header">
+                <h1>DeepShield <span class="accent">AI</span></h1>
+                <p class="tagline">Detect Fake Images. Protect Digital Identity.</p>
+            </div>
+            
+            <div class="content">
+                <p class="description">
+                    With the rise of sophisticated AI manipulation, verifying image authenticity has never been more critical. 
+                    DeepShield AI uses advanced forensic analysis to instantly detect pixel-level inconsistencies and identify deepfakes.
+                </p>
+                <button id="start-btn" class="primary-btn">
+                    <span>👉</span> Start Now
+                </button>
+            </div>
+        </section>
+
+        <!-- Upload Page Section -->
+        <section id="upload-page" class="section hidden">
+            <div class="header">
+                <h2>Image Analysis</h2>
+                <p>Upload a suspicious image to verify its authenticity.</p>
+            </div>
+            
+            <div class="upload-container" id="drop-zone">
+                <div class="upload-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                </div>
+                <p class="upload-text">Drag & drop your image here or <span class="browse-link">browse</span></p>
+                <p class="upload-hint">Supported formats: JPG, PNG</p>
+                <input type="file" id="file-input" accept=".jpg,.jpeg,.png" hidden>
+            </div>
+            
+            <!-- Image Preview -->
+            <div id="preview-container" class="hidden">
+                <img id="image-preview" src="" alt="Preview">
+                <p id="file-name" class="file-name"></p>
+                <button id="analyze-btn" class="primary-btn mt-4">
+                    <span>👉</span> Analyze Image
+                </button>
+            </div>
+            
+            <!-- Loading State -->
+            <div id="loading-state" class="hidden">
+                <div class="spinner"></div>
+                <p>Analyzing image patterns...</p>
+            </div>
+            
+            <button id="back-to-landing" class="secondary-btn mt-4">Back</button>
+        </section>
+
+        <!-- Result Page Section -->
+        <section id="result-page" class="section hidden">
+            <div id="result-content" class="result-card">
+                <!-- Content will be dynamically populated here -->
+            </div>
+            
+            <div class="action-buttons">
+                <button id="download-pdf-btn" class="primary-btn">
+                    <span>👉</span> Download PDF Report
+                </button>
+                <button id="new-analysis-btn" class="secondary-btn">
+                    Analyze Another Image
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
